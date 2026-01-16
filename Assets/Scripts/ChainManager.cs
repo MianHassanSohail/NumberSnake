@@ -117,10 +117,35 @@ public class ChainManager : MonoBehaviour
     {
         if (activeChain.Count > 0)
         {
+            // Get the last number in the chain
             ChainNumber last = activeChain[activeChain.Count - 1];
             activeChain.RemoveAt(activeChain.Count - 1);
-            numberPool.Return(last);
+
+            // Smoothly fade/shrink before returning to pool
+            StartCoroutine(SmoothRemove(last));
         }
+    }
+
+    private System.Collections.IEnumerator SmoothRemove(ChainNumber number)
+    {
+        Vector3 originalScale = number.transform.localScale;
+        float duration = 0.2f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float progress = elapsed / duration;
+
+            // Shrink to zero
+            number.transform.localScale = Vector3.Lerp(originalScale, Vector3.zero, progress);
+
+            yield return null;
+        }
+
+        // Reset scale and return to pool
+        number.transform.localScale = originalScale;
+        numberPool.Return(number);
     }
 
     public void Clear()
@@ -128,4 +153,3 @@ public class ChainManager : MonoBehaviour
         numberPool.ReturnAll(activeChain);
     }
 }
-

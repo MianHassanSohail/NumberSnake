@@ -1,0 +1,1 @@
+C:\Users\DELL\Desktop\Work\Projects\Unity Project\NumberSnake\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\2x3w2v3w\obj\arm64-v8a

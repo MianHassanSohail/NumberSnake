@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class PlayerMovement : MonoBehaviour
 {
     private GameConfig config;
@@ -37,6 +36,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         currentX = Mathf.Lerp(currentX, targetX, config.horizontalSpeed * Time.deltaTime);
+
+        // Clamp to platform bounds (hard limit)
+        float maxBound = config.platformWidth / 2f;
+        currentX = Mathf.Clamp(currentX, -maxBound, maxBound);
 
         Vector3 pos = transform.position;
         pos.x = currentX;

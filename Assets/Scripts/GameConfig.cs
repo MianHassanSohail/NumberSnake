@@ -6,7 +6,7 @@ public class GameConfig : ScriptableObject
     public float forwardSpeed = 5f;
     public float horizontalSpeed = 10f;
     public float horizontalBounds = 3f;
-    public float inputSensitivity = 0.01f;
+    public float platformWidth = 6f; // Total platform width
 
     [Header("Mobile Controls")]
     public float touchinputSensitivity = 0.02f; // Adjust for mobile feel (0.01-0.05 recommended)

@@ -15,7 +15,7 @@ MonoBehaviour:
   forwardSpeed: 5
   horizontalSpeed: 10
   horizontalBounds: 3
-  inputSensitivity: 0.01
+  platformWidth: 8
   touchinputSensitivity: 0.02
   useAccelerometer: 0
   chainSpacing: 1.3

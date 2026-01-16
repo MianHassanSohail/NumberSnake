@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
             scaleEffect = textMesh.gameObject.AddComponent<NumberScaleEffect>();
         }
 
-        inputProvider = new TouchInputProvider(config.inputSensitivity);
+        inputProvider = new TouchInputProvider(config.touchinputSensitivity);
         pathRecorder = new PathRecorder(config.maxPathHistorySize);
 
         movement.Initialize(config, inputProvider);
@@ -88,7 +88,6 @@ public class PlayerController : MonoBehaviour
                 scaleEffect.PlayPunchEffect(0.3f, punchScale);
             }
 
-            
 
             // Camera shake for negative pickups
             if (value < 0)
@@ -133,8 +132,7 @@ public class PlayerController : MonoBehaviour
         Destroy(other.gameObject);
     }
 
-    
-
+ 
     private void HandleFinishLine()
     {
         EventManager.Instance.Events.OnLevelComplete.Invoke(currentValue);

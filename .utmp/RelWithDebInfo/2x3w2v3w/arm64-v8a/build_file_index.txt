@@ -1,0 +1,2 @@
+C:\Users\DELL\Desktop\Work\Projects\Unity Project\NumberSnake\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\DELL\Desktop\Work\Projects\Unity Project\NumberSnake\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

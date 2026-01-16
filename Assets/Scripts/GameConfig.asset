@@ -16,11 +16,13 @@ MonoBehaviour:
   horizontalSpeed: 10
   horizontalBounds: 3
   platformWidth: 8
-  touchinputSensitivity: 0.02
+  mobileSensitivity: 0.1
+  editorSensitivity: 0.02
   useAccelerometer: 0
-  chainSpacing: 1.3
+  editorchainSpacing: 1.5
+  mobileChainSpacing: 0.7
   maxPathHistorySize: 100
-  chainFollowSpeed: 15
+  chainFollowSpeed: 30
   levelLength: 200
   pickupSpacing: 10
   obstacleSpacing: 15

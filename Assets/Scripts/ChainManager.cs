@@ -15,8 +15,11 @@ public class ChainManager : MonoBehaviour
 
     public void UpdateChain(PathRecorder pathRecorder)
     {
-        int spacing = Mathf.RoundToInt(config.chainSpacing * 10);
-
+#if UNITY_EDITOR
+        int spacing = Mathf.RoundToInt(config.editorchainSpacing * 10);
+#else
+        int spacing = Mathf.RoundToInt(config.mobileChainSpacing * 10);
+#endif
         for (int i = 0; i < activeChain.Count; i++)
         {
             int stepsBack = (i + 1) * spacing;
@@ -45,8 +48,11 @@ public class ChainManager : MonoBehaviour
 
     public void RebuildChain(int newValue, PathRecorder pathRecorder)
     {
-        int spacing = Mathf.RoundToInt(config.chainSpacing * 10);
-
+#if UNITY_EDITOR
+        int spacing = Mathf.RoundToInt(config.editorchainSpacing * 10);
+#else
+        int spacing = Mathf.RoundToInt(config.mobileChainSpacing * 10);
+#endif
         // Keep existing chain numbers that are still valid
         int oldChainCount = activeChain.Count;
         int newChainCount = newValue - 1;

@@ -8,12 +8,14 @@ public class GameConfig : ScriptableObject
     public float horizontalBounds = 3f;
     public float platformWidth = 6f; // Total platform width
 
-    [Header("Mobile Controls")]
-    public float touchinputSensitivity = 0.02f; // Adjust for mobile feel (0.01-0.05 recommended)
+    [Header("Controls")]
+    public float mobileSensitivity = 0.1f;  // For mobile devices
+    public float editorSensitivity = 0.02f;  // For Unity Editor
     public bool useAccelerometer = false; // Optional tilt controls
 
     [Header("Chain Settings")]
-    public float chainSpacing = 1.5f;
+    public float editorchainSpacing = 1.5f;
+    public float mobileChainSpacing = 0.5f;
     public int maxPathHistorySize = 200; // Increased to support longer chains
     public float chainFollowSpeed = 15f;
 

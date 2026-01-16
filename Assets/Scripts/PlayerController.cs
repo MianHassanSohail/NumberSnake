@@ -25,10 +25,12 @@ public class PlayerController : MonoBehaviour
         {
             scaleEffect = textMesh.gameObject.AddComponent<NumberScaleEffect>();
         }
-
-        inputProvider = new TouchInputProvider(config.touchinputSensitivity);
+#if UNITY_EDITOR
+        inputProvider = new TouchInputProvider(config.editorSensitivity);
+#else
+        inputProvider = new TouchInputProvider(config.mobileSensitivity);
+#endif
         pathRecorder = new PathRecorder(config.maxPathHistorySize);
-
         movement.Initialize(config, inputProvider);
         chainManager.Initialize(chainNumberPrefab, config);
 
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
         pathRecorder.RecordPosition(transform.position);
         chainManager.UpdateChain(pathRecorder);
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -98,6 +101,7 @@ public class PlayerController : MonoBehaviour
             EventManager.Instance.Events.OnNumberCollected.Invoke(value);
             EventManager.Instance.Events.OnScoreChanged.Invoke(currentValue);
 
+            ParticleEffectManager.Instance?.PlayCollectEffect(transform.position);
             pickup.Collect();
         }
     }
@@ -115,6 +119,7 @@ public class PlayerController : MonoBehaviour
             {
                 scaleEffect.PlayPunchEffect(0.25f, 1.3f);
             }
+            ParticleEffectManager.Instance?.PlayHitEffect(transform.position);
 
             EventManager.Instance.Events.OnObstacleHit.Invoke();
             EventManager.Instance.Events.OnScoreChanged.Invoke(currentValue);
